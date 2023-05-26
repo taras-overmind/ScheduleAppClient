@@ -1,8 +1,14 @@
 package com.taras_overmind.scheduleApp.adapter;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +21,7 @@ import java.util.List;
 public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerAppointmentHolder> {
 
     private final List<LecturerAppointmentDTO> list;
+    private Dialog dialog;
 
     public LecturerAppointmentAdapter(List<LecturerAppointmentDTO> list) {
         this.list = list;
@@ -25,13 +32,26 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
     public LecturerAppointmentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_lecturer_appointment_item, parent, false);
-        return new LecturerAppointmentHolder(view);
+        LecturerAppointmentHolder holder = new LecturerAppointmentHolder(view);
 
+        dialog=new Dialog(parent.getContext());
+        dialog.setContentView(R.layout.dialog_link);
+        dialog.findViewById(R.id.linkTextView).setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://meet.google.com/yug-etcv-erx"));
+            v.getContext().startActivity(intent);
+        });
+
+
+
+        holder.item_appointment.setOnClickListener(
+                v -> dialog.show());
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull LecturerAppointmentHolder holder, int position) {
-        LecturerAppointmentDTO lecturerAppointmentDTO=list.get(position);
+        LecturerAppointmentDTO lecturerAppointmentDTO = list.get(position);
         holder.subject.setText(lecturerAppointmentDTO.getSubject());
         holder.groups.setText(lecturerAppointmentDTO.getGroups());
         holder.subject_type.setText(lecturerAppointmentDTO.getSubject_type());
