@@ -46,8 +46,8 @@ public class LecturerActivity extends AppCompatActivity {
                 Toast.makeText(LecturerActivity.this, call.toString(), Toast.LENGTH_SHORT).show();
                 System.out.println(call);
                 ArrayList<LecturerAppointmentDTO> list1 = new ArrayList<>();
-                list1.add(new LecturerAppointmentDTO("1", "math", "lecture", "K25, K26"));
-                list1.add(new LecturerAppointmentDTO("2", "chemistry", "practice", "K24, K26"));
+                list1.add(new LecturerAppointmentDTO("1", "math", "lecture", "K25, K26", "google.com/"));
+                list1.add(new LecturerAppointmentDTO("2", "chemistry", "practice", "K24, K26", "google.com/"));
                 populateListView(list1);
             }
         });

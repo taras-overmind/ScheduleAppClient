@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -22,6 +23,7 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
 
     private final List<LecturerAppointmentDTO> list;
     private Dialog dialog;
+    private String link;
 
     public LecturerAppointmentAdapter(List<LecturerAppointmentDTO> list) {
         this.list = list;
@@ -32,20 +34,28 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
     public LecturerAppointmentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_lecturer_appointment_item, parent, false);
-        LecturerAppointmentHolder holder = new LecturerAppointmentHolder(view);
+        final LecturerAppointmentHolder holder = new LecturerAppointmentHolder(view);
 
         dialog=new Dialog(parent.getContext());
         dialog.setContentView(R.layout.dialog_link);
+//        System.out.println(i);
+//            link=list.get(holder.getAdapterPosition()).getLink();
         dialog.findViewById(R.id.linkTextView).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("http://meet.google.com/yug-etcv-erx"));
+            intent.setData(Uri.parse(link));
             v.getContext().startActivity(intent);
+
         });
 
 
-
         holder.item_appointment.setOnClickListener(
-                v -> dialog.show());
+                v ->{
+                        dialog.show();
+                        link=list.get(holder.getAdapterPosition()).getLink();
+                }
+//                Toast.makeText(parent.getContext(), list.get(2).getLink(), Toast.LENGTH_SHORT).show()
+
+        );
         return holder;
     }
 

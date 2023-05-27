@@ -4,11 +4,12 @@ import lombok.Data;
 
 
 public class LecturerAppointmentDTO {
-    public LecturerAppointmentDTO(String number, String subject, String subject_type, String groups) {
+    public LecturerAppointmentDTO(String number, String subject, String subject_type, String groups, String link) {
         this.number = number;
         this.subject = subject;
         this.subject_type = subject_type;
         this.groups = groups;
+        this.link=link;
     }
 
     private String number;
@@ -16,6 +17,15 @@ public class LecturerAppointmentDTO {
     private String subject_type;
     private String groups;
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    private String link;
     public String getNumber() {
         return number;
     }

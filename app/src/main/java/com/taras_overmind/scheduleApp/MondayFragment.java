@@ -48,13 +48,13 @@ public class MondayFragment extends Fragment {
         v=inflater.inflate(R.layout.fragment_monday, container, false);
         recyclerView=v.findViewById(R.id.lecturerAppointmentList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        loadAppointments();
+        RetrofitService retrofitService=new RetrofitService();
+        loadAppointments(retrofitService);
         return v;
     }
 
 
-    private void loadAppointments() {
-        RetrofitService retrofitService = new RetrofitService();
+    private void loadAppointments(RetrofitService retrofitService) {
         LecturerAPI lecturerAPI = retrofitService.getRetrofit().create(LecturerAPI.class);
         lecturerAPI.getLecturerAppointment().enqueue(new Callback<List<LecturerAppointmentDTO>>() {
             @Override
@@ -65,11 +65,9 @@ public class MondayFragment extends Fragment {
             @Override
             public void onFailure(Call<List<LecturerAppointmentDTO>> call, Throwable t) {
                 Toast.makeText(getActivity(), call.toString(), Toast.LENGTH_SHORT).show();
-                System.out.println(call);
-                System.err.println(call);
                 ArrayList<LecturerAppointmentDTO> list1 = new ArrayList<>();
-                list1.add(new LecturerAppointmentDTO("1", "math", "lecture", "K25, K26"));
-                list1.add(new LecturerAppointmentDTO("2", "chemistry", "practice", "K24, K26"));
+                list1.add(new LecturerAppointmentDTO("1", "math", "lecture", "K25, K26", "google.com/"));
+                list1.add(new LecturerAppointmentDTO("2", "chemistry", "practice", "K24, K26", "google.com/"));
                 populateListView(list1);
             }
         });
