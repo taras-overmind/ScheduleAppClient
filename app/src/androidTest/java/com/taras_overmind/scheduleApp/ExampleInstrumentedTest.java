@@ -1,6 +1,8 @@
 package com.taras_overmind.scheduleApp;
 
 import android.content.Context;
+import android.util.Log;
+import android.util.LogPrinter;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -26,6 +28,10 @@ public class ExampleInstrumentedTest {
     public void useAppContext() throws IOException {
         RetrofitService retrofitService = new RetrofitService();
         LecturerAPI lecturerAPI = retrofitService.getRetrofit().create(LecturerAPI.class);
-        System.out.println(lecturerAPI.getLecturerAppointment().execute().body());
+        Log.d("TAG", lecturerAPI.getLecturerAppointment("karashchuk.mykola@knu.ua", 0).execute().body().get(0).toString());
+//        assert (lecturerAPI.getLecturerAppointment(0).execute().body()).equals("");
+//     System.err.println(lecturerAPI.getLecturerAppointment(0).execute().body());
+//        Log.println(1, "<TAG>", lecturerAPI.getLecturerAppointment(0).execute().body().toString());
+        Log.d("TAG", lecturerAPI.getLecturerAppointment("karashchuk.mykola@knu.ua", 0 ).execute().body().toString());
     }
 }

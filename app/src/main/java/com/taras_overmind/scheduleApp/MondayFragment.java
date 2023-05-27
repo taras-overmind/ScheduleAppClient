@@ -1,5 +1,7 @@
 package com.taras_overmind.scheduleApp;
 
+import static com.taras_overmind.scheduleApp.Utils.loadAppointments;
+
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -30,18 +32,6 @@ public class MondayFragment extends Fragment {
     private RecyclerView recyclerView;
     private View v;
 
-    @Nullable
-    @Override
-    public void onCreate(@Nullable Bundle savedInstances) {
-        super.onCreate(savedInstances);
-//        setContentView(R.layout.activity_lecturer);
-//
-//        recyclerView=findViewById(R.id.lecturerAppointmentList_recyclerView);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        loadAppointments();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,32 +39,8 @@ public class MondayFragment extends Fragment {
         recyclerView=v.findViewById(R.id.lecturerAppointmentList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         RetrofitService retrofitService=new RetrofitService();
-        loadAppointments(retrofitService);
+        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 0);
         return v;
     }
 
-
-    private void loadAppointments(RetrofitService retrofitService) {
-        LecturerAPI lecturerAPI = retrofitService.getRetrofit().create(LecturerAPI.class);
-        lecturerAPI.getLecturerAppointment().enqueue(new Callback<List<LecturerAppointmentDTO>>() {
-            @Override
-            public void onResponse(Call<List<LecturerAppointmentDTO>> call, Response<List<LecturerAppointmentDTO>> response) {
-                populateListView(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<LecturerAppointmentDTO>> call, Throwable t) {
-                Toast.makeText(getActivity(), call.toString(), Toast.LENGTH_SHORT).show();
-                ArrayList<LecturerAppointmentDTO> list1 = new ArrayList<>();
-                list1.add(new LecturerAppointmentDTO("1", "math", "lecture", "K25, K26", "google.com/"));
-                list1.add(new LecturerAppointmentDTO("2", "chemistry", "practice", "K24, K26", "google.com/"));
-                populateListView(list1);
-            }
-        });
-    }
-
-    private void populateListView(List<LecturerAppointmentDTO> list) {
-        LecturerAppointmentAdapter lecturerAppointmentAdapter = new LecturerAppointmentAdapter(list);
-        recyclerView.setAdapter(lecturerAppointmentAdapter);
-    }
 }

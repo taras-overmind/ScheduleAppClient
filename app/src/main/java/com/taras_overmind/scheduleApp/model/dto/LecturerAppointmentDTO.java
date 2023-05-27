@@ -12,6 +12,17 @@ public class LecturerAppointmentDTO {
         this.link=link;
     }
 
+    @Override
+    public String toString() {
+        return "LecturerAppointmentDTO{" +
+                "number='" + number + '\'' +
+                ", subject='" + subject + '\'' +
+                ", subject_type='" + subject_type + '\'' +
+                ", groups='" + groups + '\'' +
+                ", link='" + link + '\'' +
+                '}';
+    }
+
     private String number;
     private String subject;
     private String subject_type;

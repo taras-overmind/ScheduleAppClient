@@ -35,7 +35,7 @@ public class LecturerActivity extends AppCompatActivity {
     private void loadAppointments(){
         RetrofitService retrofitService=new RetrofitService();
         LecturerAPI lecturerAPI=retrofitService.getRetrofit().create(LecturerAPI.class);
-        lecturerAPI.getLecturerAppointment().enqueue(new Callback<List<LecturerAppointmentDTO>>() {
+        lecturerAPI.getLecturerAppointment("karashchuk.mykola@knu.ua", 0).enqueue(new Callback<List<LecturerAppointmentDTO>>() {
             @Override
             public void onResponse(Call<List<LecturerAppointmentDTO>> call, Response<List<LecturerAppointmentDTO>> response) {
                 populateListView(response.body());
