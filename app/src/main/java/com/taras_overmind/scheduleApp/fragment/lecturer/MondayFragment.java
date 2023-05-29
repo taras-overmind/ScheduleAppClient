@@ -32,7 +32,7 @@ public class MondayFragment extends Fragment {
 //        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 0);
 
 //        FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        loadLecturerAppointments(recyclerView, retrofitService, FirebaseAuth.getInstance().getCurrentUser().getEmail(), 0);
+        loadLecturerAppointments(recyclerView, FirebaseAuth.getInstance().getCurrentUser().getEmail(), 0);
         return v;
     }
 

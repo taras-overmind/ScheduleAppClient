@@ -1,8 +1,9 @@
 package com.taras_overmind.scheduleApp.fragment.student;
 
-import static com.taras_overmind.scheduleApp.Utils.loadLecturerAppointments;
 import static com.taras_overmind.scheduleApp.Utils.loadStudentAppointments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.taras_overmind.scheduleApp.R;
 import com.taras_overmind.scheduleApp.retrofit.RetrofitService;
 
@@ -29,10 +29,9 @@ public class MondayFragment extends Fragment {
         recyclerView=v.findViewById(R.id.lecturerAppointmentList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         RetrofitService retrofitService=new RetrofitService();
-//        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 0);
 
-//        FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        loadStudentAppointments(recyclerView, retrofitService, "ТТП-32", 0);
+        SharedPreferences sharedPreferences = inflater.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        loadStudentAppointments(recyclerView, sharedPreferences.getString("group_name", ""), 0);
 
         return v;
     }

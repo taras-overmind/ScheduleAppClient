@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.taras_overmind.scheduleApp.R;
+import com.taras_overmind.scheduleApp.Utils;
 import com.taras_overmind.scheduleApp.model.dto.LecturerAppointmentDTO;
 
 import java.util.List;
@@ -38,8 +39,6 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
 
         dialog=new Dialog(parent.getContext());
         dialog.setContentView(R.layout.dialog_link);
-//        System.out.println(i);
-//            link=list.get(holder.getAdapterPosition()).getLink();
         dialog.findViewById(R.id.linkTextView).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(link));
@@ -47,14 +46,11 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
 
         });
 
-
         holder.item_appointment.setOnClickListener(
                 v ->{
                         dialog.show();
                         link=list.get(holder.getAdapterPosition()).getLink();
                 }
-//                Toast.makeText(parent.getContext(), list.get(2).getLink(), Toast.LENGTH_SHORT).show()
-
         );
         return holder;
     }
@@ -66,6 +62,7 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
         holder.groups.setText(lecturerAppointmentDTO.getGroups());
         holder.subject_type.setText(lecturerAppointmentDTO.getSubject_type());
         holder.number.setText(lecturerAppointmentDTO.getNumber());
+        holder.time.setText(Utils.getAppointmentTime(lecturerAppointmentDTO.getNumber()));
     }
 
     @Override

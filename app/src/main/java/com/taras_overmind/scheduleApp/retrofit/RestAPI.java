@@ -17,4 +17,10 @@ public interface RestAPI {
 
     @GET("/smthing")
     Call<String> getSmthing();
+
+    @GET("/faculties")
+    Call<List<String>> getFaculties();
+
+    @GET("/groups")
+    Call<List<String>> getGroups(@Query("faculty_name") String faculty_name);
 }

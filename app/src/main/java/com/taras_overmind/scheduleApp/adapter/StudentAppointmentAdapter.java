@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.taras_overmind.scheduleApp.R;
+import com.taras_overmind.scheduleApp.Utils;
 import com.taras_overmind.scheduleApp.model.dto.LecturerAppointmentDTO;
 import com.taras_overmind.scheduleApp.model.dto.StudentAppointmentDTO;
 
@@ -62,6 +63,7 @@ public class StudentAppointmentAdapter extends RecyclerView.Adapter<StudentAppoi
         holder.groups.setText(studentAppointmentDTO.getLecturer_name());
         holder.subject_type.setText(studentAppointmentDTO.getSubject_type());
         holder.number.setText(studentAppointmentDTO.getNumber());
+        holder.time.setText(Utils.getAppointmentTime(studentAppointmentDTO.getNumber()));
     }
 
     @Override

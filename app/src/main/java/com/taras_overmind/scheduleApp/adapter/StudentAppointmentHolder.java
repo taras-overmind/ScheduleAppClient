@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.taras_overmind.scheduleApp.R;
 
 public class StudentAppointmentHolder extends RecyclerView.ViewHolder {
-    TextView subject, subject_type, groups, number;
+    TextView subject, subject_type, groups, number, time;
     LinearLayout item_appointment;
 
 
@@ -20,6 +20,7 @@ public class StudentAppointmentHolder extends RecyclerView.ViewHolder {
         subject=itemView.findViewById(R.id.subject);
         subject_type=itemView.findViewById(R.id.subject_type);
         groups=itemView.findViewById(R.id.lecturer);
-        number=itemView.findViewById(R.id.number);
+        number=itemView.findViewById(R.id.text_number);
+        time=itemView.findViewById(R.id.time);
     }
 }

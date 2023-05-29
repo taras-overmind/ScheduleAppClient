@@ -11,7 +11,7 @@ import com.taras_overmind.scheduleApp.R;
 
 public class LecturerAppointmentHolder extends RecyclerView.ViewHolder {
 
-    TextView subject, subject_type, groups, number;
+    TextView subject, subject_type, groups, number, time;
     LinearLayout item_appointment;
 
 
@@ -22,5 +22,6 @@ public class LecturerAppointmentHolder extends RecyclerView.ViewHolder {
         subject_type=itemView.findViewById(R.id.text_subject_type);
         groups=itemView.findViewById(R.id.text_groups);
         number=itemView.findViewById(R.id.text_number);
+        time=itemView.findViewById(R.id.time);
     }
 }

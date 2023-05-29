@@ -31,7 +31,7 @@ public class TuesdayFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         RetrofitService retrofitService=new RetrofitService();
 //        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 1);
-        loadLecturerAppointments(recyclerView, retrofitService, FirebaseAuth.getInstance().getCurrentUser().getEmail(), 1);
+        loadLecturerAppointments(recyclerView, FirebaseAuth.getInstance().getCurrentUser().getEmail(), 1);
 
         return v;
     }

@@ -17,9 +17,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.StudentActivity"
-            android:exported="true"
-            android:label="Student page">
+            android:name=".activity.StartActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,26 +26,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.StudentActivity"
             android:exported="true"
-            android:theme="@style/Theme.Material3.Light.NoActionBar">
+            android:label="Student page"
+            android:parentActivityName=".activity.StartActivity">
+        >
 
         </activity>
-        <!--        <activity-->
-        <!--            android:name=".activity.LecturerActivity"-->
-        <!--            android:exported="true"></activity>-->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.StartActivity">
+        >
+        </activity> <!-- <activity -->
+        <!-- android:name=".activity.LecturerActivity" -->
+        <!-- android:exported="true"></activity> -->
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
             android:label="Lecturer page"
             android:parentActivityName=".activity.LoginActivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
     </application>
 

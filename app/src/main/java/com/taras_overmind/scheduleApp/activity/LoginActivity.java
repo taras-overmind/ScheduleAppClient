@@ -27,16 +27,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//        if(mAuth.getCurrentUser()!=null){
-//            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+
 
         editEmailText = findViewById(R.id.email);
         editPasswordText = findViewById(R.id.password);
         button = findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
+
+
+        if(mAuth.getCurrentUser()!=null){
+            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+//            finish();
+        }
 
         button.setOnClickListener(v -> {
             String email, password;
