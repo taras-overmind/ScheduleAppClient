@@ -1,4 +1,4 @@
-package com.taras_overmind.scheduleApp;
+package com.taras_overmind.scheduleApp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -6,21 +6,25 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
-import com.taras_overmind.scheduleApp.adapter.ViewPagerAdapter;
+import com.taras_overmind.scheduleApp.R;
+import com.taras_overmind.scheduleApp.adapter.StudentViewPagerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class StudentActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager2 viewPager2;
-    ViewPagerAdapter viewPagerAdapter;
+    StudentViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+//       getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
+        setContentView(R.layout.activity_student);
         tabLayout= findViewById(R.id.tabLayout);
         viewPager2=findViewById(R.id.viewPager);
-        viewPagerAdapter=new ViewPagerAdapter(this);
+        viewPagerAdapter=new StudentViewPagerAdapter(this);
         viewPager2.setAdapter(viewPagerAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

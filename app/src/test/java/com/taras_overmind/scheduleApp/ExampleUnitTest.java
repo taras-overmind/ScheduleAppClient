@@ -2,9 +2,7 @@ package com.taras_overmind.scheduleApp;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import com.taras_overmind.scheduleApp.retrofit.LecturerAPI;
+import com.taras_overmind.scheduleApp.retrofit.RestAPI;
 import com.taras_overmind.scheduleApp.retrofit.RetrofitService;
 
 import java.io.IOException;
@@ -18,7 +16,7 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws IOException {
         RetrofitService retrofitService = new RetrofitService();
-        LecturerAPI lecturerAPI = retrofitService.getRetrofit().create(LecturerAPI.class);
-        System.out.println(lecturerAPI.getSmthing().execute().body());
+        RestAPI restAPI = retrofitService.getRetrofit().create(RestAPI.class);
+        System.out.println(restAPI.getSmthing().execute().body());
     }
 }

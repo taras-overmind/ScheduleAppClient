@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.taras_overmind.scheduleApp.FridayFragment;
-import com.taras_overmind.scheduleApp.MondayFragment;
-import com.taras_overmind.scheduleApp.ThursdayFragment;
-import com.taras_overmind.scheduleApp.TuesdayFragment;
-import com.taras_overmind.scheduleApp.WednesdayFragment;
+import com.taras_overmind.scheduleApp.fragment.student.FridayFragment;
+import com.taras_overmind.scheduleApp.fragment.student.MondayFragment;
+import com.taras_overmind.scheduleApp.fragment.student.ThursdayFragment;
+import com.taras_overmind.scheduleApp.fragment.student.TuesdayFragment;
+import com.taras_overmind.scheduleApp.fragment.student.WednesdayFragment;
 
-public class ViewPagerAdapter extends FragmentStateAdapter {
-
-    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+public class StudentViewPagerAdapter extends FragmentStateAdapter {
+        public StudentViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 

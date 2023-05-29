@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397606566080",
+    "project_id": "scheduleapp-2dee7",
+    "storage_bucket": "scheduleapp-2dee7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397606566080:android:6c2408a42ff85e4e821525",
+        "android_client_info": {
+          "package_name": "com.taras_overmind.scheduleApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyc6beK9R1SUsvzynGUNND_5EaCJknN3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
