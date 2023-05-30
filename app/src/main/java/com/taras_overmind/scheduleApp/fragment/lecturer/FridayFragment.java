@@ -28,8 +28,6 @@ public class FridayFragment extends Fragment {
         v=inflater.inflate(R.layout.fragment_friday, container, false);
         recyclerView=v.findViewById(R.id.lecturerAppointmentList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RetrofitService retrofitService=new RetrofitService();
-//        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 4);
         loadLecturerAppointments(recyclerView, FirebaseAuth.getInstance().getCurrentUser().getEmail(), 4);
 
         return v;

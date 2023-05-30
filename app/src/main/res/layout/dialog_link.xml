@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center">
+    android:layout_height="150dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/linkTextView"
+        android:id="@+id/link"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Натисність щоб перейти по посиланню"
-        android:textSize="16sp"
-        android:textColor="#0000EE"
+        android:layout_height="18dp"
         android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:textColorLink="@color/colorPrimary"
         android:autoLink="web"
+        android:clickable="true"
+        android:gravity="center"
         android:linksClickable="true"
-        android:gravity="center" />
+        android:text="Натисність щоб перейти по посиланню"
+        android:textColor="#0000EE"
+        android:textColorLink="@color/colorPrimary"
+        android:textSize="16sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editLinkField"
+        android:layout_width="match_parent"
+        android:layout_marginTop="11dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="Email" />
 
     <Button
         android:id="@+id/editButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Link"
-        android:layout_below="@id/linkTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="90dp"
+        android:text="Змінити посилання" />
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/edit"
+        android:layout_height="wrap_content"
+        android:text="Змінити"
+        android:layout_marginTop="90dp"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

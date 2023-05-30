@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.taras_overmind.scheduleApp.R;
-import com.taras_overmind.scheduleApp.retrofit.RetrofitService;
 
 public class WednesdayFragment extends Fragment {
 
@@ -28,8 +27,6 @@ public class WednesdayFragment extends Fragment {
         v=inflater.inflate(R.layout.fragment_wednesday, container, false);
         recyclerView=v.findViewById(R.id.lecturerAppointmentList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RetrofitService retrofitService=new RetrofitService();
-//        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 2);
         SharedPreferences sharedPreferences = inflater.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         loadStudentAppointments(recyclerView, sharedPreferences.getString("group_name", ""), 2);
 

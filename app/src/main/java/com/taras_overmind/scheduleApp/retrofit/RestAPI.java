@@ -1,6 +1,7 @@
 package com.taras_overmind.scheduleApp.retrofit;
 
 import com.taras_overmind.scheduleApp.model.dto.LecturerAppointmentDTO;
+import com.taras_overmind.scheduleApp.model.dto.LecturerDTO;
 import com.taras_overmind.scheduleApp.model.dto.StudentAppointmentDTO;
 
 import java.util.List;
@@ -23,4 +24,7 @@ public interface RestAPI {
 
     @GET("/groups")
     Call<List<String>> getGroups(@Query("faculty_name") String faculty_name);
+
+    @GET("/lecturer_data")
+    Call<LecturerDTO> getLecturerByEmail(@Query("email") String email);
 }

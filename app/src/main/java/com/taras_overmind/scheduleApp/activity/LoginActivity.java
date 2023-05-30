@@ -36,9 +36,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if(mAuth.getCurrentUser()!=null){
-            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent=new Intent(getApplicationContext(), PersonalPageActivity.class);
             startActivity(intent);
-//            finish();
+            finish();
         }
 
         button.setOnClickListener(v -> {
@@ -58,9 +58,9 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), PersonalPageActivity.class);
                         startActivity(intent);
-//                        finish();
+                        finish();
                     } else
                         Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_LONG).show();
                 }

@@ -25,12 +25,10 @@ import retrofit2.Response;
 
 public class StartActivity extends AppCompatActivity {
 
-    private Spinner spinner_faculty, spinner_group;
+    Spinner spinner_faculty, spinner_group;
     TextView textView;
     List<String> list1, list2;
-
     Button student_btn;
-
     SharedPreferences sharedPreferences;
 
     @Override
@@ -39,8 +37,8 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        student_btn=findViewById(R.id.btn_student);
-        textView=findViewById(R.id.go_to_login);
+        student_btn = findViewById(R.id.btn_student);
+        textView = findViewById(R.id.go_to_login);
         spinner_group = findViewById(R.id.spinner_select_group);
         spinner_faculty = findViewById(R.id.spinner_select_faculty);
         spinner_group.setVisibility(View.INVISIBLE);
@@ -57,6 +55,7 @@ public class StartActivity extends AppCompatActivity {
                 list1 = response.body();
                 list1.add(0, "Оберіть факультет");
                 adapter_faculty.addAll(list1);
+                spinner_faculty.setAdapter(adapter_faculty);
             }
 
             @Override
@@ -64,9 +63,6 @@ public class StartActivity extends AppCompatActivity {
                 Toast.makeText(StartActivity.this, "Failed to load faculties", Toast.LENGTH_SHORT).show();
             }
         });
-        spinner_faculty.setSelection(0, false);
-        spinner_faculty.setAdapter(adapter_faculty);
-
 
         spinner_faculty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -91,7 +87,6 @@ public class StartActivity extends AppCompatActivity {
                         }
                     });
                 else spinner_group.setVisibility(View.INVISIBLE);
-
             }
 
             @Override
@@ -101,7 +96,7 @@ public class StartActivity extends AppCompatActivity {
         spinner_group.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(!list2.get(position).equals("Оберіть групу")){
+                if (!list2.get(position).equals("Оберіть групу")) {
                     sharedPreferences.edit().putString("group_name", list2.get(position)).apply();
                     Toast.makeText(StartActivity.this, list2.get(position), Toast.LENGTH_SHORT).show();
                 }
@@ -118,7 +113,7 @@ public class StartActivity extends AppCompatActivity {
         });
 
         textView.setOnClickListener(v -> {
-            Intent intent= new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         });
 

@@ -29,8 +29,6 @@ public class TuesdayFragment extends Fragment {
         v=inflater.inflate(R.layout.fragment_tuesday, container, false);
         recyclerView=v.findViewById(R.id.lecturerAppointmentList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RetrofitService retrofitService=new RetrofitService();
-//        loadAppointments(recyclerView, retrofitService, "karashchuk.mykola@knu.ua", 1);
         SharedPreferences sharedPreferences = inflater.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         loadStudentAppointments(recyclerView, sharedPreferences.getString("group_name", ""), 1);
 
