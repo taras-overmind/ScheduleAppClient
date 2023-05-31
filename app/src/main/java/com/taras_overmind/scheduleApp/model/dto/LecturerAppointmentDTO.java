@@ -12,6 +12,9 @@ public class LecturerAppointmentDTO {
         this.link=link;
     }
 
+    public LecturerAppointmentDTO() {
+    }
+
     @Override
     public String toString() {
         return "LecturerAppointmentDTO{" +
@@ -21,6 +24,15 @@ public class LecturerAppointmentDTO {
                 ", groups='" + groups + '\'' +
                 ", link='" + link + '\'' +
                 '}';
+    }
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     private String number;

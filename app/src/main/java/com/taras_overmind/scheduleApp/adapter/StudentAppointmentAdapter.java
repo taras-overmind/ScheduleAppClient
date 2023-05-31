@@ -2,10 +2,14 @@ package com.taras_overmind.scheduleApp.adapter;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,14 +36,21 @@ public class StudentAppointmentAdapter extends RecyclerView.Adapter<StudentAppoi
                 .inflate(R.layout.list_student_appointment_item, parent, false);
         final StudentAppointmentHolder holder = new StudentAppointmentHolder(view);
 
-        dialog=new Dialog(parent.getContext());
+        dialog = new Dialog(parent.getContext());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setContentView(R.layout.dialog_link);
         dialog.findViewById(R.id.link).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(link));
             v.getContext().startActivity(intent);
-
         });
+
+        Button edit_btn1 = dialog.findViewById(R.id.editButton);
+        edit_btn1.setText("Повернутись");
+        edit_btn1.setOnClickListener(v -> {
+            dialog.hide();
+        });
+
 
         holder.item_appointment.setOnClickListener(
                 v ->{

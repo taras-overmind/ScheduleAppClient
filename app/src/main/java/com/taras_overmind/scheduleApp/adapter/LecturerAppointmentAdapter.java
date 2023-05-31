@@ -2,6 +2,8 @@ package com.taras_overmind.scheduleApp.adapter;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +23,17 @@ import com.taras_overmind.scheduleApp.model.dto.LecturerAppointmentDTO;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerAppointmentHolder> {
 
     private final List<LecturerAppointmentDTO> list;
     private Dialog dialog;
     private String link;
 
+    private Long id;
     public LecturerAppointmentAdapter(List<LecturerAppointmentDTO> list) {
         this.list = list;
     }
@@ -40,6 +47,7 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
 
 
         dialog = new Dialog(parent.getContext());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setContentView(R.layout.dialog_link);
         dialog.findViewById(R.id.link).setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -65,6 +73,19 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
             edit_btn1.setVisibility(View.VISIBLE);
             edit_btn2.setVisibility(View.INVISIBLE);
             link = editText.getText().toString();
+            LecturerAppointmentDTO lecturerAppointmentDTO=new LecturerAppointmentDTO();
+            lecturerAppointmentDTO.setId(id);
+            lecturerAppointmentDTO.setLink(link);
+            Utils.restAPI.updateLinkById(lecturerAppointmentDTO).enqueue(new Callback<LecturerAppointmentDTO>() {
+                @Override
+                public void onResponse(Call<LecturerAppointmentDTO> call, Response<LecturerAppointmentDTO> response) {
+                }
+
+                @Override
+                public void onFailure(Call<LecturerAppointmentDTO> call, Throwable t) {
+                    Toast.makeText(parent.getContext(), "Changed successfully", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
 
@@ -76,6 +97,7 @@ public class LecturerAppointmentAdapter extends RecyclerView.Adapter<LecturerApp
                     edit_btn1.setVisibility(View.VISIBLE);
                     edit_btn2.setVisibility(View.INVISIBLE);
                     link = list.get(holder.getAdapterPosition()).getLink();
+                    id=list.get(holder.getAdapterPosition()).getId();
                 }
         );
         return holder;

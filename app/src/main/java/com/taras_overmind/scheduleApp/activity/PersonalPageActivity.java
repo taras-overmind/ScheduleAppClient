@@ -63,7 +63,7 @@ public class PersonalPageActivity extends AppCompatActivity {
              startActivity(intent);
          });
          changePassword.setOnClickListener(v -> {
-             mAuth.sendPasswordResetEmail(login);
+             mAuth.sendPasswordResetEmail("Taras.Korolchuk.11@gmail.com");
              Toast.makeText(this, "Лист відправлено на вашу пошту", Toast.LENGTH_SHORT).show();
          });
 

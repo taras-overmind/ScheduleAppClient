@@ -6,7 +6,9 @@ import com.taras_overmind.scheduleApp.model.dto.StudentAppointmentDTO;
 
 import java.util.List;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RestAPI {
@@ -27,4 +29,7 @@ public interface RestAPI {
 
     @GET("/lecturer_data")
     Call<LecturerDTO> getLecturerByEmail(@Query("email") String email);
+
+    @POST("/lecturer/update/link")
+    Call<LecturerAppointmentDTO> updateLinkById(@Body LecturerAppointmentDTO lecturerAppointmentDTO);
 }
